@@ -1,0 +1,11 @@
+.test-class {
+    .hello {
+      .some-other-selector {
+        some-rule: some-value;
+        #some__selector { some-rule: some-value; }
+        &__hi {
+          someklsjdf: aslkjdf;
+        }
+      }
+    }
+}

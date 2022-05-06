@@ -1,0 +1,13 @@
+.test-class2 {
+    .bye {
+      .some-other-selector-ok {
+        margin-right: 20px;
+        &__hi {
+          color: gray;
+        }
+
+        #some__selector { display: flex; }
+
+      }
+    }
+}

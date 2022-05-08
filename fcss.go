@@ -13,25 +13,6 @@ var readFile = func(filename string) (string, error) {
 
 var getAbs = filepath.Abs
 
-func FindClassesInDir(dir string) []string {
-	absDirPath, _ := getAbs(dir)
-	result := []string{}
-
-	filepath.Walk(dir, func(dir string, info os.FileInfo, e error) error {
-		if e != nil {
-			return e
-		}
-
-		// check if it is a regular file (not dir)
-		if info.Mode().IsRegular() {
-			fullPath := filepath.Join(absDirPath, info.Name())
-			result = append(result, FindClassesInFile(fullPath)...)
-		}
-		return nil
-	})
-	return result
-}
-
 func FindClassesInFile(filePath string) []string {
 	text, _ := readFile(filePath)
 	return FindClassesInText(text)
@@ -46,32 +27,25 @@ func FindClassesInText(textContent string) []string {
 		result = append(result, j[1])
 	}
 
-	return result
-}
-
-func BulkSearch(searchTerms []string) {
-	result := 
-	for selector := range selectors {
-		selector
-	}
+	return unique(result);
 }
 
 func unique(e []string) []string {
-    r := []string{}
+	r := []string{}
 
-    for _, s := range e {
-        if !contains(r[:], s) {
-            r = append(r, s)
-        }
-    }
-    return r
+	for _, s := range e {
+		if !contains(r[:], s) {
+			r = append(r, s)
+		}
+	}
+	return r
 }
 
 func contains(e []string, c string) bool {
-    for _, s := range e {
-        if s == c {
-            return true
-        }
-    }
-    return false
+	for _, s := range e {
+		if s == c {
+			return true
+		}
+	}
+	return false
 }
